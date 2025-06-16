@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Event Loop Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #log {
+      background: #111;
+      color: #0f0;
+      padding: 1em;
+      height: 300px;
+      overflow-y: scroll;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <h2>📽️ JavaScript Event Loop Simulation</h2>
+  <button onclick="runDemo()">Run Demo</button>
+  <div id="log"></div>
+
+  <script>
+    const log = (msg) => {
+      document.getElementById('log').innerText += msg + '\n';
+    };
+
+    function runDemo() {
+      document.getElementById('log').innerText = ''; // Clear log
+      
+      log('Script start');
+
+      setTimeout(() => {
+        log('⏰ setTimeout callback (0ms)');
+      }, 0);
+
+      Promise.resolve().then(() => {
+        log('✅ Promise .then callback');
+      });
+
+      log('Script end');
+    }
+  </script>
+</body>
+</html>
